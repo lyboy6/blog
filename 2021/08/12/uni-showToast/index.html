@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>教你解决 showLoading 和 showToast 显示异常的问题 - 十三博客</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="当 wx.showLoading 和 wx.showToast 混合使用时，showLoading 和 showToast 会相互覆盖对方，调用 hideLoading 时也会将 toast 内容进行隐藏。 在 uni-app 也会发生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="教你解决 showLoading 和 showToast 显示异常的问题">
+<meta property="og:url" content="http://blog.13wl.cn/2021/08/12/uni-showToast/index.html">
+<meta property="og:site_name" content="十三博客">
+<meta property="og:description" content="当 wx.showLoading 和 wx.showToast 混合使用时，showLoading 和 showToast 会相互覆盖对方，调用 hideLoading 时也会将 toast 内容进行隐藏。 在 uni-app 也会发生">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-12T01:52:16.000Z">
+<meta property="article:modified_time" content="2021-08-12T01:56:07.732Z">
+<meta property="article:author" content="十三">
+<meta property="article:tag" content="uniapp">
+<meta property="article:tag" content="小程序">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1628733526162">
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1628733526162">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="十三" class="mdui-btn mdui-btn-icon"><img src="/img/avatar.jpg" alt="十三"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="十三">
+            <img src="/img/avatar.jpg" alt="十三" alt="十三">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>4</div>
+        <div><span>标签</span>4</div>
+        <div><span>分类</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://github.com/lyboy6/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 十三
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="教你解决 showLoading 和 showToast 显示异常的问题" class="lazyload">
+              <h1>教你解决 showLoading 和 showToast 显示异常的问题</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年08月12日</a>
+    <a><i class="nexmoefont icon-areachart"></i>586 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
+</div>
+
+      
+
+      <p>当 wx.showLoading 和 wx.showToast 混合使用时，showLoading 和 showToast 会相互覆盖对方，调用 hideLoading 时也会将 toast 内容进行隐藏。 在 uni-app 也会发生</p>
+ <span id="more"></span>
+
+<h2 id="触发场景"><a href="#触发场景" class="headerlink" title="触发场景"></a>触发场景</h2><p>当我们给一个网络请求增加 Loading 态时，如果同时存在多个请求（A 和 B），如果 A 请求失败需要将错误信息以 Toast 形式展示，B 请求完成后又调用了 wx.hideLoading 来结束 Loading 态，此时 Toast 也会立即消失，不符合展示一段时间后再隐藏的预期。</p>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>这个问题的出现，其实是因为小程序将 Toast 和 Loading 放到同一层渲染引起的，而且缺乏一个优先级判断，也没有提供 Toast、Loading 是否正在显示的接口供业务侧判断。所以实现的方案是我们自己实现这套逻辑，可以使用 Object.defineProperty 方法重新定义原生 API，业务使用方式不需要任何修改。</p>
+<h2 id="代码查考"><a href="#代码查考" class="headerlink" title="代码查考"></a>代码查考</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 注意此代码应该在调用原生api之前执行</span><br><span class="hljs-keyword">let</span> isShowLoading = <span class="hljs-literal">false</span><br><span class="hljs-keyword">let</span> isShowToast = <span class="hljs-literal">false</span><br><span class="hljs-keyword">const</span> &#123; showLoading, hideLoading, showToast, hideToast &#125; = wx<br><span class="hljs-built_in">Object</span>.defineProperty(wx, <span class="hljs-string">&#x27;showLoading&#x27;</span>, &#123;<br>  <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否可以配置</span><br>  <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否可迭代</span><br>  <span class="hljs-attr">writable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否可重写</span><br>  <span class="hljs-function"><span class="hljs-title">value</span>(<span class="hljs-params">...param</span>)</span> &#123;<br>    <span class="hljs-keyword">if</span> (isShowToast) &#123;<br>      <span class="hljs-comment">// Toast优先级更高</span><br>      <span class="hljs-keyword">return</span><br>    &#125;<br>    isShowLoading = <span class="hljs-literal">true</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;--------showLoading--------&#x27;</span>)<br>    <span class="hljs-keyword">return</span> showLoading.apply(<span class="hljs-built_in">this</span>, param) <span class="hljs-comment">// 原样移交函数参数和this</span><br>  &#125;,<br>&#125;)<br><span class="hljs-built_in">Object</span>.defineProperty(wx, <span class="hljs-string">&#x27;hideLoading&#x27;</span>, &#123;<br>  <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否可以配置</span><br>  <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否可迭代</span><br>  <span class="hljs-attr">writable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否可重写</span><br>  <span class="hljs-function"><span class="hljs-title">value</span>(<span class="hljs-params">...param</span>)</span> &#123;<br>    <span class="hljs-keyword">if</span> (isShowToast) &#123;<br>      <span class="hljs-comment">// Toast优先级更高</span><br>      <span class="hljs-keyword">return</span><br>    &#125;<br>    isShowLoading = <span class="hljs-literal">false</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;--------hideLoading--------&#x27;</span>)<br>    <span class="hljs-keyword">return</span> hideLoading.apply(<span class="hljs-built_in">this</span>, param) <span class="hljs-comment">// 原样移交函数参数和this</span><br>  &#125;,<br>&#125;)<br><span class="hljs-built_in">Object</span>.defineProperty(wx, <span class="hljs-string">&#x27;showToast&#x27;</span>, &#123;<br>  <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否可以配置</span><br>  <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否可迭代</span><br>  <span class="hljs-attr">writable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否可重写</span><br>  <span class="hljs-function"><span class="hljs-title">value</span>(<span class="hljs-params">...param</span>)</span> &#123;<br>    <span class="hljs-keyword">if</span> (isShowLoading) &#123;<br>      <span class="hljs-comment">// Toast优先级更高</span><br>      wx.hideLoading()<br>    &#125;<br>    isShowToast = <span class="hljs-literal">true</span><br>    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&#x27;--------showToast--------&#x27;</span>)<br>    <span class="hljs-keyword">return</span> showToast.apply(<span class="hljs-built_in">this</span>, param) <span class="hljs-comment">// 原样移交函数参数和this</span><br>  &#125;,<br>&#125;)<br><span class="hljs-built_in">Object</span>.defineProperty(wx, <span class="hljs-string">&#x27;hideToast&#x27;</span>, &#123;<br>  <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否可以配置</span><br>  <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否可迭代</span><br>  <span class="hljs-attr">writable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否可重写</span><br>  <span class="hljs-function"><span class="hljs-title">value</span>(<span class="hljs-params">...param</span>)</span> &#123;<br>    isShowToast = <span class="hljs-literal">false</span><br>    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&#x27;--------hideToast--------&#x27;</span>)<br>    <span class="hljs-keyword">return</span> hideToast.apply(<span class="hljs-built_in">this</span>, param) <span class="hljs-comment">// 原样移交函数参数和this</span><br>  &#125;,<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>调整后展示逻辑为：</p>
+<p>优先级：Toast&gt;Loading，如果 Toast 正在显示，调用 showLoading、hideLoading 将无效<br>调用 showToast 时，如果 Loading 正在显示，则先调用 wx.hideLoading 隐藏 Loading</p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>十三<br>
+        <strong>本文链接：</strong><a href="http://blog.13wl.cn/2021/08/12/uni-showToast/" title="http:&#x2F;&#x2F;blog.13wl.cn&#x2F;2021&#x2F;08&#x2F;12&#x2F;uni-showToast&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;blog.13wl.cn&#x2F;2021&#x2F;08&#x2F;12&#x2F;uni-showToast&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/uniapp/" rel="tag">uniapp</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1628733526167"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>
