@@ -4,10 +4,14 @@
 
 <head>
     
-    <title>node创建mysql数据库 - 十三博客</title>
+    <!-- <title>node创建mysql数据库 - 十三博客</title> -->
+    <title>  node创建mysql数据库  十三博客  - 十三的个人博客  </title>
     <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="专注于程序开发网站优化">
+    
+    <!-- <meta name="keywords" content="十三博客"> -->
+  
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
     
@@ -16,20 +20,20 @@
     <meta name="description" content="node.js 现在对于前端来说 也算是必不可少的 node.js 是后端语言 既然是离不开对数据库的操作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node创建mysql数据库">
-<meta property="og:url" content="http://blog.13wl.cn/2021/08/11/node-create-mysql/index.html">
+<meta property="og:url" content="http://blog.13wl.cn/node-create-mysql.html">
 <meta property="og:site_name" content="十三博客">
 <meta property="og:description" content="node.js 现在对于前端来说 也算是必不可少的 node.js 是后端语言 既然是离不开对数据库的操作">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-11T15:23:03.000Z">
-<meta property="article:modified_time" content="2021-08-11T15:57:18.089Z">
+<meta property="article:modified_time" content="2021-08-13T16:27:17.730Z">
 <meta property="article:author" content="十三">
 <meta property="article:tag" content="node">
 <meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1628733653358">
+    <link rel="stylesheet" href="/css/style.css?v=1628955897454">
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1628733653358">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1628955897454">
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -53,8 +57,8 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>4</div>
-        <div><span>标签</span>3</div>
+        <div><span>文章</span>5</div>
+        <div><span>标签</span>4</div>
         <div><span>分类</span>0</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
@@ -63,6 +67,27 @@
             <i class="mdui-list-item-icon nexmoefont icon-home"></i>
             <div class="mdui-list-item-content">
                 回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/links.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
             </div>
         </a>
         
@@ -83,10 +108,21 @@
     
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a>
+      <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a>
     </div>
     
   </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
 
     
 </aside>
@@ -141,7 +177,7 @@
       
     <div class="nexmoe-post-copyright">
         <strong>本文作者：</strong>十三<br>
-        <strong>本文链接：</strong><a href="http://blog.13wl.cn/2021/08/11/node-create-mysql/" title="http:&#x2F;&#x2F;blog.13wl.cn&#x2F;2021&#x2F;08&#x2F;11&#x2F;node-create-mysql&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;blog.13wl.cn&#x2F;2021&#x2F;08&#x2F;11&#x2F;node-create-mysql&#x2F;</a><br>
+        <strong>本文链接：</strong><a href="http://blog.13wl.cn/node-create-mysql.html" title="http:&#x2F;&#x2F;blog.13wl.cn&#x2F;node-create-mysql.html" target="_blank" rel="noopener">http:&#x2F;&#x2F;blog.13wl.cn&#x2F;node-create-mysql.html</a><br>
         
             <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
         
@@ -181,7 +217,7 @@
 
  
 
-<script async src="/js/app.js?v=1628733653359"></script>
+<script async src="/js/app.js?v=1628955897455"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>

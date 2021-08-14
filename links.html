@@ -4,32 +4,35 @@
 
 <head>
     
-    <title>nodejs发送emial邮件 - 十三博客</title>
+    <!-- <title>我的朋友 - 十三博客</title> -->
+    <title>  我的朋友  十三博客  - 十三的个人博客  </title>
     <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="专注于程序开发网站优化">
+    
+    <!-- <meta name="keywords" content="十三博客"> -->
+  
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
     
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <meta name="description" content="nodejs 发送 emial 信息">
-<meta property="og:type" content="article">
-<meta property="og:title" content="nodejs发送emial邮件">
-<meta property="og:url" content="http://blog.13wl.cn/2021/08/11/node-emial/index.html">
+    <meta name="description" content="为了找到一个好朋友,走多远的路也没关系。如果你有一个苹果,我有一个苹果,彼此交换,我们每人仍只有一个苹果;如果你有一种思想,我有…真正的友情,是一棵成长缓慢的植物。友谊永远是一个甜蜜的责任,从来不是一种机会。蜡烛有心还惜别,替人垂泪到天明。 友情链接">
+<meta property="og:type" content="website">
+<meta property="og:title" content="我的朋友">
+<meta property="og:url" content="http://blog.13wl.cn/links.html">
 <meta property="og:site_name" content="十三博客">
-<meta property="og:description" content="nodejs 发送 emial 信息">
+<meta property="og:description" content="为了找到一个好朋友,走多远的路也没关系。如果你有一个苹果,我有一个苹果,彼此交换,我们每人仍只有一个苹果;如果你有一种思想,我有…真正的友情,是一棵成长缓慢的植物。友谊永远是一个甜蜜的责任,从来不是一种机会。蜡烛有心还惜别,替人垂泪到天明。 友情链接">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://blog.13wl.cn/2021/08/11/node-emial/node.png">
-<meta property="article:published_time" content="2021-08-11T13:26:43.000Z">
-<meta property="article:modified_time" content="2021-08-11T15:22:06.707Z">
+<meta property="article:published_time" content="2011-07-13T12:46:25.000Z">
+<meta property="article:modified_time" content="2021-08-13T17:03:40.596Z">
 <meta property="article:author" content="十三">
+<meta property="article:tag" content="十三博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://blog.13wl.cn/2021/08/11/node-emial/node.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1628733653364">
+    <link rel="stylesheet" href="/css/style.css?v=1628955897444">
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1628733653364">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1628955897444">
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -53,8 +56,8 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>4</div>
-        <div><span>标签</span>3</div>
+        <div><span>文章</span>5</div>
+        <div><span>标签</span>4</div>
         <div><span>分类</span>0</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
@@ -63,6 +66,27 @@
             <i class="mdui-list-item-icon nexmoefont icon-home"></i>
             <div class="mdui-list-item-content">
                 回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple true" href="/links.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
             </div>
         </a>
         
@@ -83,10 +107,21 @@
     
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a>
+      <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a>
     </div>
     
   </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
 
     
 </aside>
@@ -102,52 +137,23 @@
         <div class="nexmoe-primary">
             <div class="nexmoe-post">
 
-  <article>
-      
-          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
-              <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="nodejs发送emial邮件" class="lazyload">
-              <h1>nodejs发送emial邮件</h1>
-          </div>
-      
-      
-      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2021年08月11日</a>
-    <a><i class="nexmoefont icon-areachart"></i>7 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
-</div>
-
-      
-
-      <p>nodejs 发送 emial 信息</p>
- <span id="more"></span>
-
-<h2 id="nodeJS"><a href="#nodeJS" class="headerlink" title="nodeJS"></a>nodeJS</h2><p><img data-fancybox="gallery" data-sizes="auto" data-src="/2021/08/11/node-emial/node.png" alt="这是代替图片的文字，随便写" class="lazyload"></p>
-
-  </article>
-
   
-      
-    <div class="nexmoe-post-copyright">
-        <strong>本文作者：</strong>十三<br>
-        <strong>本文链接：</strong><a href="http://blog.13wl.cn/2021/08/11/node-emial/" title="http:&#x2F;&#x2F;blog.13wl.cn&#x2F;2021&#x2F;08&#x2F;11&#x2F;node-emial&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;blog.13wl.cn&#x2F;2021&#x2F;08&#x2F;11&#x2F;node-emial&#x2F;</a><br>
-        
-            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
-        
+    <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+        <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="我的朋友" class="lazyload">
+        <h1>我的朋友</h1>
     </div>
-
-
   
+
+    <div style="height: 30px;"></div>
+  <article class="nexmoe-py">
+    <p>为了找到一个好朋友,走多远的路也没关系。<br>如果你有一个苹果,我有一个苹果,彼此交换,我们每人仍只有一个苹果;如果你有一种思想,我有…<br>真正的友情,是一棵成长缓慢的植物。<br>友谊永远是一个甜蜜的责任,从来不是一种机会。<br>蜡烛有心还惜别,替人垂泪到天明。</p>
+<h2 id="友情链接"><a href="#友情链接" class="headerlink" title="友情链接"></a>友情链接</h2>
+  </article>
   
-  <div class="nexmoe-post-meta nexmoe-rainbow">
+    <div class="nexmoe-post-footer">
+      
+    </div>
     
-    
-</div>
-
-  
-      <div class="nexmoe-post-footer">
-          
-      </div>
-  
 </div>
             <div class="nexmoe-post-right">
               <div class="nexmoe-fixed">
@@ -167,7 +173,7 @@
 
  
 
-<script async src="/js/app.js?v=1628733653366"></script>
+<script async src="/js/app.js?v=1628955897446"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>
