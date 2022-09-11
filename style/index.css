@@ -604,9 +604,20 @@ h6 {
 @keyframes fade-in {
   0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(-100px);
   }
 
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -1008,17 +1019,18 @@ mobile_nav_box z-index 99
 
 /* 分页 top  */
 .article_topbg {
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
   position: relative;
-  padding: 160px 0;
+  padding: 180px 0;
   background-color: #394048;
   color: #eee;
   text-align: center;
   transition: all .3s ease-in-out;
   background-position: center center;
   background-size: cover;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-image: url('/assets/imgs/top_bg.jpg');
+  animation: fade-in .5s;
 }
 
 .article_topbg:before {
@@ -1294,6 +1306,11 @@ mobile_nav_box z-index 99
   color: #666;
   border: 1px solid #fff;
 }
+
+.log_container {
+  transition: all .3s;
+  animation: fade-out 1s;
+}
 .article_main .bread_guide {
   display: flex;
   justify-content: space-between;
@@ -1399,7 +1416,11 @@ blockquote {
 .content_text blockquote p {
   line-height: 26px;
 }
-
+.content_text p > code {
+  background-color: #f7f7f9;
+  color: var(--hover_color);
+  padding: 2px 4px;
+}
 
 
 .content_text h2,
@@ -1772,6 +1793,28 @@ ol.linenums {
 
 .relevant_article .article_items {
   box-shadow: 0 0 5px 0 #ececec;
+}
+.highlight pre {
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+/* 为了适配官方 代码高亮 */
+/* TODO 兼容的不是很好 建议 不使用官网的 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+.highlight td{
+  display: table-cell !important;
+}
+
+.highlight td.gutter {
+  min-width: 40px;
+  width: 40px;
+  max-width: 100%;
 }
 
 /* 侧边栏 */
