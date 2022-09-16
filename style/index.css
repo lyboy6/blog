@@ -698,6 +698,10 @@ mobile_nav_box z-index 99
   margin-right: 4px;
 }
 
+.home_bg_container .left_info .goto_btn>div a {
+  display: block;
+  color: #fff;
+}
 .home_bg_container>div {
   width: 50%;
 }
@@ -1990,7 +1994,9 @@ ol.linenums {
   padding: 15px;
   text-align: center;
 }
-
+.footer_box .copy span {
+  margin: 0 4px;
+}
 .footer a {color: #676b6f;}
 
 .footer a:hover {color: #fff;}
